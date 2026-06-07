@@ -1,1 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Private Diary</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: white;
+      text-align: center;
+      padding-top: 100px;
+    }
 
+    #diary {
+      display: none;
+    }
+
+    textarea {
+      width: 80%;
+      height: 200px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<script>
+  let password = "@mithu2528";  // 👉 CHANGE THIS PASSWORD
+
+  let input = prompt("🔐 Enter Password:");
+
+  if(input !== password){
+    document.body.innerHTML = "<h1>❌ Access Denied</h1>";
+  } else {
+    document.write(`
+      <div id="diary">
+        <h1>📔 My Private Diary</h1>
+        <textarea id="text"></textarea><br>
+        <button onclick="save()">Save</button>
+        <div id="entries"></div>
+      </div>
+    `);
+  }
+
+  function save(){
+    let text = document.getElementById("text").value;
+
+    if(text.trim() === "") return;
+
+    let div = document.createElement("div");
+    div.innerText = text;
+    div.style.border = "1px solid white";
+    div.style.margin = "10px";
+    div.style.padding = "10px";
+
+    document.getElementById("entries").prepend(div);
+  }
+</script>
+
+</body>
+</html>
